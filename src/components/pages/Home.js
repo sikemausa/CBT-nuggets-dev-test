@@ -1,11 +1,11 @@
+import { connect } from 'react-redux';
+import { peopleActions } from '../../actions/peopleActions';
 import React, { Component } from 'react';
-import axios from 'axios';
 
 class Home extends Component {
 
-  getPeopleData() {
-    axios.get('http://swapi.co/api/people')
-    .then(response => console.log(response));
+  componentWillMount() {
+    this.props.getPeopleData();
   }
 
   render() {
@@ -25,4 +25,18 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => {
+  const { people } = state;
+  return { people: people };
+};
+
+const mapDispatchToProps = dispatch => {
+
+  return {
+    getPeopleData: people => {
+       dispatch(peopleActions.getPeopleData(people));
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
