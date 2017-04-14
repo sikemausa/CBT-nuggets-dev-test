@@ -26,19 +26,21 @@ const store = createStore(
 );
 
 ReactDOM.render(
-    <Provider store={store}>
-        <ConnectedRouter history={history}>
-            <div className="flex flex-site flex-col">
-                <Route path="/">
-                    <div>
-                        <div className="innermax">
-                            <Route exact path="/" component={Home} />
-                            <Route exact path="/profile" component={Profile} />
-                        </div>
-                    </div>
-                </Route>
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <div className="flex flex-site flex-col">
+        <Route path="/">
+          <div>
+            <div className="innermax">
+              <Route exact path="/" component={Home} />
+              <Route exact path="/profile" component={Profile} />
             </div>
-        </ConnectedRouter>
-    </Provider>,
-    document.getElementById('root')
+          </div>
+        </Route>
+      </div>
+    </ConnectedRouter>
+  </Provider>,
+  /*eslint-disable */
+  document.getElementById('root')
+  /*eslint-enable */
 );
