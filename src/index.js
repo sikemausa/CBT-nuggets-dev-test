@@ -8,8 +8,8 @@ import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import { Route } from 'react-router-dom';
 import rootReducer from './reducers';
-import { Home } from './components/pages';
-import './style/main.scss';
+import { Home, Profile } from './components/pages';
+import './style/index.scss';
 
 const history = createHistory();
 
@@ -26,18 +26,21 @@ const store = createStore(
 );
 
 ReactDOM.render(
-    <Provider store={store}>
-        <ConnectedRouter history={history}>
-            <div className="flex flex-site flex-col">
-                <Route path="/">
-                    <div>
-                        <div className="innermax">
-                            <Route exact path="/" component={Home} />
-                        </div>
-                    </div>
-                </Route>
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <div className="flex flex-site flex-col">
+        <Route path="/">
+          <div>
+            <div className="innermax">
+              <Route exact path="/" component={Home} />
+              <Route exact path="/profile" component={Profile} />
             </div>
-        </ConnectedRouter>
-    </Provider>,
-    document.getElementById('root')
+          </div>
+        </Route>
+      </div>
+    </ConnectedRouter>
+  </Provider>,
+  /*eslint-disable */
+  document.getElementById('root')
+  /*eslint-enable */
 );

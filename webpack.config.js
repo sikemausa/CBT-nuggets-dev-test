@@ -47,6 +47,20 @@ module.exports = {
         ],
     },
 
+    preLoaders: [
+      {
+        test: /\.jsx?$/,
+        loaders: ['eslint-loader'],
+        include: path.join(__dirname, 'src'),
+        exclude: path.join(__dirname, 'src/app/container')
+      }
+    ],
+    
+    eslint: {
+      configFile: './.eslintrc',  //your .eslintrc file
+      emitWarning: true
+    },
+
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
