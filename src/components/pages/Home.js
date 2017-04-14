@@ -1,6 +1,6 @@
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { peopleActions } from '../../actions/peopleActions';
-import React, { Component } from 'react';
 
 class Home extends Component {
 
@@ -27,15 +27,14 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   const { people } = state;
-  return { people: people };
+  return { people };
 };
 
 const mapDispatchToProps = dispatch => {
-
   return {
     getPeopleData: people => {
-       dispatch(peopleActions.getPeopleData(people));
-    }
+      dispatch(peopleActions.getPeopleData(people));
+    },
   };
 };
 

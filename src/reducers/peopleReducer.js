@@ -14,15 +14,25 @@ const peopleReducer = (state = initialState, action) => {
 
   switch (type) {
     case PEOPLE_GET_PENDING: {
-      return { ...state, status: LOADING, error: false };
+      return { ...state,
+        status: LOADING,
+        error: false,
+      };
     }
 
     case PEOPLE_GET_RESOLVED: {
-      return { ...state, data: { people: action.people }, status: SUCCESS, error: false};
+      return { ...state,
+        data: { people: action.people },
+        status: SUCCESS,
+        error: false,
+      };
     }
 
     case PEOPLE_GET_REJECTED: {
-      return { ...state,  status: ERROR, error: action.error };
+      return { ...state,
+        status: ERROR,
+        error: action.error,
+      };
     }
 
     default: {
