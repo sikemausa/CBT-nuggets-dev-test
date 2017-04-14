@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class Home extends Component {
+
+  getPeopleData() {
+    axios.get('http://swapi.co/api/people')
+    .then(response => console.log(response));
+  }
+
   render() {
     return (
       <div>
