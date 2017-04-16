@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "CBT React/Redux Framework for potential applicants to use for their technical test",
   "scripts": {
-    "start": "node server.js -d --config webpack.config.prod.js --content-base dist/ --progress --colors",
+    "start": "nodemon server.js -d --config webpack.config.prod.js --content-base dist/ --progress --colors",
     "clean": "npm run remove && mkdir dist",
     "remove": "node_modules/.bin/rimraf ./dist",
     "build:html": "babel-node tools/buildHtml.js",
@@ -47,7 +47,6 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack-dev-middleware": "^1.10.1",
-    "webpack-dev-server": "^2.1.0-beta.0",
     "webpack-hot-middleware": "^2.17.1"
   },
   "dependencies": {
