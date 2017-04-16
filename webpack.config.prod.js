@@ -20,13 +20,13 @@ module.exports = {
     context: path.resolve(__dirname, 'src'),
 
     devtool: 'inline-source-map',
-
-    devServer: {
-        hot: true,
-        contentBase: path.resolve(__dirname, 'dist'),
-        publicPath: '/',
-        historyApiFallback: true
-    },
+    // 
+    // devServer: {
+    //     hot: true,
+    //     contentBase: path.resolve(__dirname, 'dist'),
+    //     publicPath: '/',
+    //     historyApiFallback: true
+    // },
 
     module: {
         rules: [
