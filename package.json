@@ -3,15 +3,16 @@
   "version": "0.1.0",
   "description": "CBT React/Redux Framework for potential applicants to use for their technical test",
   "scripts": {
-    "clean": "rimraf dist",
-    "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
-    "build": "npm run clean && npm run build:webpack -p",
-    "start": "webpack-dev-server",
-    "lint": "eslint src || exit 0",
-    "with": "concurrently"
+    "clean": "npm run remove && mkdir dist",
+    "remove": "node_modules/.bin/rimraf ./dist",
+    "build:html": "babel-node tools/buildHtml.js",
+    "prebuild": "npm-run-all clean build:html",
+    "build": "babel-node tools/build.js",
+    "postbuild": "babel-node server.js"
   },
   "author": "CBT Nuggets Frontend Team",
   "devDependencies": {
+    "babel-cli": "^6.24.1",
     "babel-core": "^6.13.2",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.4",
@@ -50,13 +51,21 @@
   "dependencies": {
     "axios": "^0.15.0",
     "body-parser": "^1.17.1",
+    "cheerio": "^0.22.0",
+    "colors": "^1.1.2",
+    "compression": "^1.6.2",
     "express": "^4.15.2",
+    "favicon": "0.0.2",
+    "fs": "0.0.1-security",
     "history": "^4.6.1",
     "invariant": "2.2.1",
     "lodash": "^4.13.1",
     "md5": "^2.2.1",
     "moment": "^2.18.1",
     "node-shims": "^0.1.1",
+    "npm-run-all": "^4.0.2",
+    "open": "0.0.5",
+    "path": "^0.12.7",
     "query-string": "^4.3.2",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
@@ -70,8 +79,7 @@
     "redux-logger": "^2.8.2",
     "redux-thunk": "^2.1.0",
     "resolve-pathname": "2.0.2",
-    "warning": "3.0.0",
-    "webpack-dev-server": "^2.4.2"
+    "warning": "3.0.0"
   },
   "engines": {
     "node": ">=4.0.0",
