@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 var morgan = require('morgan');
+var webpack = require('webpack');
 
 app.use(morgan('dev'))
 app.use(express.static('dist'));
