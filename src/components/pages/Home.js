@@ -1,11 +1,31 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { peopleActions } from '../../actions/peopleActions';
+import { Link } from 'react-router-dom';
 
 class Home extends Component {
 
-  getPeopleData() {
-    axios.get('http://swapi.co/api/people')
-    .then(response => console.log(response));
+  componentWillMount() {
+    this.props.getPeopleData();
+    console.log(this.props);
+  }
+
+  renderLoader() {
+      if (this.props.people.status === 'LOADING') {
+          return (
+            'Loading'
+          );
+      }
+      return null;
+  }
+
+  renderSuccess() {
+      if (this.props.people.status === 'SUCCESS') {
+          return (
+            this.props.people.data.people[0].name
+          );
+      }
+      return null;
   }
 
   render() {
@@ -15,7 +35,8 @@ class Home extends Component {
           <div className="row">
             <div className="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 padding-top-20">
               <p>
-                  Welcome to the home page, everyone can see this!
+                { this.renderSuccess() }
+                { this.renderLoader() }
               </p>
             </div>
           </div>
@@ -25,4 +46,17 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => {
+  const { people } = state;
+  return { people };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getPeopleData: people => {
+      dispatch(peopleActions.getPeopleData(people));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

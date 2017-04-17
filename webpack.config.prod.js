@@ -1,4 +1,4 @@
-const { resolve } = require('path');
+const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -12,21 +12,21 @@ module.exports = {
     ],
 
     output: {
-        filename: '[name].[hash].js',
-        path: resolve(__dirname, 'dist'),
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'dist'),
         publicPath: '/'
     },
 
-    context: resolve(__dirname, 'src'),
+    context: path.resolve(__dirname, 'src'),
 
     devtool: 'inline-source-map',
 
-    devServer: {
-        hot: true,
-        contentBase: resolve(__dirname, 'dist'),
-        publicPath: '/',
-        historyApiFallback: true
-    },
+    // devServer: {
+    //     hot: true,
+    //     contentBase: path.resolve(__dirname, 'dist'),
+    //     publicPath: '/',
+    //     historyApiFallback: true
+    // },
 
     module: {
         rules: [
@@ -49,6 +49,7 @@ module.exports = {
     },
 
     plugins: [
+        new webpack.optimize.UglifyJsPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
         new HtmlWebpackPlugin({
