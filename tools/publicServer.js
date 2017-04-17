@@ -2,7 +2,6 @@ var express = require('express');
 var path = require('path');
 var open = require('open');
 var compression = require('compression');
-var favicon = require('serve-favicon');
 
 /*eslint-disable no-console */
 
