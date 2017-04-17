@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "CBT React/Redux Framework for potential applicants to use for their technical test",
   "scripts": {
+    "postinstall": "node_modules/.bin/webpack",
     "start": "nodemon tools/publicServer.js -d --config webpack.config.prod.js --content-base dist/ --progress --colors",
     "clean": "npm run remove && mkdir dist",
     "remove": "node_modules/.bin/rimraf ./dist",
