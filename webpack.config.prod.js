@@ -4,11 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: [
-        // 'react-hot-loader/patch',
-        // 'webpack-dev-server/client?http://localhost:8080',
-        // 'webpack/hot/only-dev-server',
-        // './index.js'
-        '../src/index.js'
+        'react-hot-loader/patch',
+        'webpack-dev-server/client?http://localhost:8080',
+        'webpack/hot/only-dev-server',
+        './index.js'
     ],
 
     output: {
@@ -20,13 +19,13 @@ module.exports = {
     context: path.resolve(__dirname, 'src'),
 
     devtool: 'inline-source-map',
-    // 
-    // devServer: {
-    //     hot: true,
-    //     contentBase: path.resolve(__dirname, 'dist'),
-    //     publicPath: '/',
-    //     historyApiFallback: true
-    // },
+
+    devServer: {
+        hot: true,
+        contentBase: path.resolve(__dirname, 'dist'),
+        publicPath: '/',
+        historyApiFallback: true
+    },
 
     module: {
         rules: [
