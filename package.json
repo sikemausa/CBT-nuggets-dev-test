@@ -10,7 +10,7 @@
     "lint": "eslint src || exit 0",
     "with": "concurrently"
   },
-  "author": "CBT Nuggets Frontend Team",
+  "author": "Mike Sausa",
   "devDependencies": {
     "babel-core": "^6.13.2",
     "babel-eslint": "^7.1.1",
