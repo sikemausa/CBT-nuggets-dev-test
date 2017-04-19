@@ -10,6 +10,7 @@ const initialState = {
 };
 
 const peopleReducer = (state = initialState, action) => {
+
     const { type } = action;
 
     switch (type) {
