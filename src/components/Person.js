@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { push } from 'react-router-redux';
 
 class Person extends Component {
 
@@ -8,9 +9,10 @@ class Person extends Component {
     }
 
     render() {
+        const userId = this.userRoute(this.props.id);
         return (
             <tr key={this.props.id}>
-                <Link className="link" to={this.userRoute(this.props.id)}>
+                <Link className="link" to={userId}>
                     <td className="person-name person-data">
                         { this.props.name }
                     </td>
