@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
@@ -25,22 +25,26 @@ const store = createStore(
     middleware
 );
 
+store.dispatch({ type: 'INIT' });
+
+class App extends Component {
+    render() {
+        return (
+            <Provider store={store}>
+                <ConnectedRouter history={history}>
+                    <div>
+                        <Route exact path="/" component={Home} />
+                        <Route exact path="/:id" component={Profile} />
+                    </div>
+                </ConnectedRouter>
+            </Provider>
+        );
+    }
+}
+
 ReactDOM.render(
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <div className="flex flex-site flex-col">
-        <Route path="/">
-          <div>
-            <div className="innermax">
-              <Route exact path="/" component={Home} />
-              <Route exact path="/profile" component={Profile} />
-            </div>
-          </div>
-        </Route>
-      </div>
-    </ConnectedRouter>
-  </Provider>,
+    <App />,
   /*eslint-disable */
-  document.getElementById('root')
+    document.getElementById('root')
   /*eslint-enable */
 );

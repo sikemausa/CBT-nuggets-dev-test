@@ -11,7 +11,7 @@
     "build": "babel-node tools/build.js",
     "postbuild": "babel-node tools/publicServer.js"
   },
-  "author": "CBT Nuggets Frontend Team",
+  "author": "Mike Sausa",
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.13.2",
@@ -54,6 +54,7 @@
   "dependencies": {
     "axios": "^0.15.0",
     "body-parser": "^1.17.1",
+    "express": "^4.15.2",
     "cheerio": "^0.22.0",
     "colors": "^1.1.2",
     "compression": "^1.6.2",
@@ -65,6 +66,7 @@
     "lodash": "^4.13.1",
     "md5": "^2.2.1",
     "moment": "^2.18.1",
+    "node": "0.0.0",
     "node-shims": "^0.1.1",
     "npm-run-all": "^4.0.2",
     "open": "0.0.5",

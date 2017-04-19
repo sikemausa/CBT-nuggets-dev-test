@@ -4,16 +4,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: [
-        // 'react-hot-loader/patch',
-        // 'webpack-dev-server/client?http://localhost:8080',
-        // 'webpack/hot/only-dev-server',
-        // './index.js'
-        '../src/index.js'
+        'webpack/hot/dev-server',
+        'webpack-hot-middleware/client',
+        'webpack/hot/only-dev-server',
+        './index.js'
     ],
 
     output: {
-        filename: '[name].[hash].js',
-        path: resolve(__dirname, 'dist'),
+        filename: 'bundle.js',
+        path: '/',
         publicPath: '/'
     },
 
