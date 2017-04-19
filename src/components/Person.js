@@ -10,11 +10,11 @@ class Person extends Component {
     render() {
         return (
             <tr key={this.props.id}>
-            <Link className="link" to={this.userRoute(this.props.id)}>
-                <td className="person-name person-data">
-                    { this.props.name }
-                </td>
-            </Link>
+                <Link className="link" to={this.userRoute(this.props.id)}>
+                    <td className="person-name person-data">
+                        { this.props.name }
+                    </td>
+                </Link>
                 <td className="person-gender person-data">
                     { this.props.gender }
                 </td>

@@ -3,14 +3,9 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { peopleActions } from '../../actions/peopleActions';
 import Person from '../Person';
+import Search from '../Search';
 
 class Home extends Component {
-    constructor(props){
-        super();
-        this.state = {
-            searchterm: '',
-        }
-    }
 
     componentWillMount() {
         if (this.successfulPeopleLoad()) {
@@ -45,7 +40,7 @@ class Home extends Component {
                             <th className="person-data-header gender-header">Gender</th>
                             <th className="person-data-header year-born-header">Year Born</th>
                         </tr>
-                        { this.renderPeople() }
+                        { this.appendPeopleToTable() }
                     </tbody>
                 </table>
             );
@@ -53,41 +48,50 @@ class Home extends Component {
         return null;
     }
 
-    renderPeople() {
+    appendPeopleToTable() {
         if (this.successfulPeopleLoad()) {
             const { people } = this.props.people.data;
-            return (
-                people.map((person) => {
-                    let id = this.getPersonId(person.url);
-                    return (
-                        <Person
-                          key={id}
-                          id={id}
-                          people={people}
-                          name={person.name}
-                          gender={person.gender}
-                          birth_year={person.birth_year}
-                        />
-                    );
-                })
-            );
+            const { filteredPeople } = this.props.search.data;
+            if (!filteredPeople) return this.renderPeople(people);
+            else return this.renderPeople(filteredPeople);
         }
         return null;
+    }
+
+    renderPeople(people) {
+        return (
+            people.map((person) => {
+                let id = this.getPersonId(person.url);
+                return (
+                    <Person
+                    key={id}
+                    id={id}
+                    people={people}
+                    name={person.name}
+                    gender={person.gender}
+                    birth_year={person.birth_year}
+                    />
+                );
+            })
+        );
     }
 
     render() {
         return (
             <div>
+                <Search />
+                <div>
                 {this.renderLoadingMessage()}
                 {this.renderTable()}
+                </div>
             </div>
         );
     }
 }
 
 const mapStateToProps = state => {
-    const { people } = state;
-    return { people };
+    const { people, search } = state;
+    return { people, search };
 };
 
 const mapDispatchToProps = dispatch => {

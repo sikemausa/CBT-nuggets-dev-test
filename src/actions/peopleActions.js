@@ -6,7 +6,7 @@ export const peopleActions = {
     getPeopleData: () => {
         return dispatch => {
             dispatch({ type: actionTypes.PEOPLE_GET_PENDING });
-            
+
             axios.get('/people')
             .then(response => {
                 dispatch({
@@ -22,5 +22,4 @@ export const peopleActions = {
             });
         };
     },
-
 };

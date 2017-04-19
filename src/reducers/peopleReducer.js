@@ -1,9 +1,16 @@
 import { ERROR, LOADING, SUCCESS, NOT_STARTED } from './statusTypes';
-import { PEOPLE_GET_PENDING, PEOPLE_GET_RESOLVED, PEOPLE_GET_REJECTED } from '../actions/types';
+import {
+    PEOPLE_GET_PENDING,
+    PEOPLE_GET_RESOLVED,
+    PEOPLE_GET_REJECTED,
+    FILTER_PEOPLE,
+} from '../actions/types';
 
 const initialState = {
     data: {
         people: [],
+        filteredPeople: [],
+        searchTerm: '',
     },
     status: NOT_STARTED,
     error: {},

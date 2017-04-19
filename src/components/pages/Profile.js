@@ -81,9 +81,7 @@ class Profile extends Component {
                 <div id="profile-attributes-container">
                     <div id="profile-picture-name">
                         <p className="profile-attribute">{ person.name } </p>
-                        {/* <div id="profile-picture"> */}
-                            <img id="profile-picture" src={profilePicture} />
-                        {/* </div> */}
+                        <img id="profile-picture" role="presentation" src={profilePicture} />
                     </div>
                     <div id="profile-row-1">
                         <p className="profile-attribute"> Hgt: { person.height } </p>
@@ -96,13 +94,13 @@ class Profile extends Component {
                         <p className="profile-attribute"> Gen: { person.gender } </p>
                     </div>
                 </div>
-                    <div id="starships-info">
-                        <img id="starships-title" src={spaceship}></img>
-                        <div id="starships-table">
-                        { this.renderTable() }
-                        { this.renderLoadingMessage() }
-                        </div>
+                <div id="starships-info">
+                    <img id="starships-title" role="presentation" src={spaceship} />
+                    <div id="starships-table">
+                    { this.renderTable() }
+                    { this.renderLoadingMessage() }
                     </div>
+                </div>
             </div>
         );
     }
