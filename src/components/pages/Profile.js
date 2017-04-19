@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { starshipsActions } from '../../actions/starshipsActions';
+import spaceship from '../../assets/spaceship.png';
+import profilePicture from '../../assets/profile-picture.jpg';
 
 class Profile extends Component {
 
@@ -72,21 +74,36 @@ class Profile extends Component {
     render() {
         const { id } = this.props.match.params;
         const { people } = this.props.people.data;
-        const person = this.findPersonById(people, id);
+
+        const person = this.findPersonById(people, id)[0];
 
         return (
-            <div>
-                <h1> Name: { person[0].name } </h1>
-                <h1> Height: { person[0].height } </h1>
-                <h1> Mass: { person[0].mass } </h1>
-                <h1> Hair Color: { person[0].hair_color } </h1>
-                <h1> Eye Color: { person[0].eye_color } </h1>
-                <h1> Birth Year: { person[0].birth_year } </h1>
-                <h1> Gender: { person[0].gender } </h1>
-                <div> Starships:
-                  { this.renderTable() }
-                  { this.renderLoadingMessage() }
+            <div id="profile-page">
+                <div id="profile-attributes-container">
+                    <div id="profile-picture-name">
+                        <p className="profile-attribute">{ person.name } </p>
+                        {/* <div id="profile-picture"> */}
+                            <img id="profile-picture" src={profilePicture} />
+                        {/* </div> */}
+                    </div>
+                    <div id="profile-row-1">
+                        <p className="profile-attribute"> Hgt: { person.height } </p>
+                        <p className="profile-attribute"> Mass: { person.mass } </p>
+                        <p className="profile-attribute"> Hair: { person.hair_color } </p>
+                    </div>
+                    <div id="profile-row-2">
+                        <p className="profile-attribute"> Eyes: { person.eye_color } </p>
+                        <p className="profile-attribute"> Born: { person.birth_year } </p>
+                        <p className="profile-attribute"> Gen: { person.gender } </p>
+                    </div>
                 </div>
+                    <div id="starships-info">
+                        <img id="starships-title" src={spaceship}></img>
+                        <div id="starships-table">
+                        { this.renderTable() }
+                        { this.renderLoadingMessage() }
+                        </div>
+                    </div>
             </div>
         );
     }

@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
-
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { peopleActions } from '../../actions/peopleActions';
 import Person from '../Person';
 
 class Home extends Component {
+    constructor(props){
+        super();
+        this.state = {
+            searchterm: '',
+        }
+    }
 
     componentWillMount() {
         if (this.successfulPeopleLoad()) {
@@ -35,10 +40,10 @@ class Home extends Component {
             return (
                 <table id="people-data-table">
                     <tbody>
-                        <tr>
-                            <th className="person-data-header">Name</th>
-                            <th className="person-data-header">Gender</th>
-                            <th className="person-data-header">Year Born</th>
+                        <tr className="header-container">
+                            <th className="person-data-header name-header">Name</th>
+                            <th className="person-data-header gender-header">Gender</th>
+                            <th className="person-data-header year-born-header">Year Born</th>
                         </tr>
                         { this.renderPeople() }
                     </tbody>
