@@ -74,6 +74,7 @@ class Profile extends Component {
     render() {
         const { id } = this.props.match.params;
         const { people } = this.props.people.data;
+
         const person = this.findPersonById(people, id)[0];
 
         return (
