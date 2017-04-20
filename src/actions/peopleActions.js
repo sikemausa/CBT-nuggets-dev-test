@@ -6,7 +6,6 @@ export const peopleActions = {
     getPeopleData: () => {
         return dispatch => {
             dispatch({ type: actionTypes.PEOPLE_GET_PENDING });
-
             axios.get('/api/people')
             .then(response => {
                 dispatch({
@@ -17,9 +16,10 @@ export const peopleActions = {
             .catch(err => {
                 dispatch({
                     type: actionTypes.PEOPLE_GET_REJECTED,
-                    error: err.message,
+                    error: err,
                 });
             });
         };
     },
+
 };

@@ -8,6 +8,12 @@ import PeopleTable from '../PeopleTable';
 import loadingIcon from '../../assets/loading-icon.png';
 
 class Home extends Component {
+    constructor(props){
+        super();
+        this.state = {
+            searchterm: '',
+        }
+    }
 
     componentWillMount() {
         if (this.props.people.status === 'SUCCESS') return;

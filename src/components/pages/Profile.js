@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { starshipsActions } from '../../actions/starshipsActions';
 import spaceship from '../../assets/spaceship.png';
 import profilePicture from '../../assets/profile-picture.jpg';
-import ProfileView from '../ProfileView';
 
+import ProfileView from '../ProfileView';
 class Profile extends Component {
 
     componentWillMount() {
