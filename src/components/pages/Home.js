@@ -3,13 +3,12 @@ import { connect } from 'react-redux';
 import { peopleActions } from '../../actions/peopleActions';
 import Person from '../Person';
 import Search from '../Search';
+import loadingIcon from '../../assets/loading-icon.png';
 
 class Home extends Component {
 
     componentWillMount() {
-        if (this.successfulPeopleLoad()) {
-            return;
-        }
+        if (this.successfulPeopleLoad()) return;
         this.props.getPeopleData();
     }
 
@@ -22,9 +21,19 @@ class Home extends Component {
         return (this.props.people.status === 'SUCCESS');
     }
 
+    appendPeopleToTable() {
+        if (this.successfulPeopleLoad()) {
+            const { people } = this.props.people.data;
+            const { filteredPeople } = this.props.search.data;
+            if (!filteredPeople) return this.renderPeople(people);
+            return this.renderPeople(filteredPeople);
+        }
+        return null;
+    }
+
     renderLoadingMessage() {
         if (!this.successfulPeopleLoad()) {
-            return <h1 id="loading-screen">{ 'Loading' }</h1>;
+            return <div id="loading-screen"><img id="loading-image" src={loadingIcon} /></div>;
         }
         return null;
     }
@@ -47,28 +56,18 @@ class Home extends Component {
         return null;
     }
 
-    appendPeopleToTable() {
-        if (this.successfulPeopleLoad()) {
-            const { people } = this.props.people.data;
-            const { filteredPeople } = this.props.search.data;
-            if (!filteredPeople) return this.renderPeople(people);
-            else return this.renderPeople(filteredPeople);
-        }
-        return null;
-    }
-
     renderPeople(people) {
         return (
-            people.map((person) => {
+            people.map(person => {
                 let id = this.getPersonId(person.url);
                 return (
                     <Person
-                    key={id}
-                    id={id}
-                    people={people}
-                    name={person.name}
-                    gender={person.gender}
-                    birth_year={person.birth_year}
+                      key={id}
+                      id={id}
+                      people={people}
+                      name={person.name}
+                      gender={person.gender}
+                      birth_year={person.birth_year}
                     />
                 );
             })

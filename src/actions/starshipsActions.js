@@ -7,7 +7,7 @@ export const starshipsActions = {
         return dispatch => {
             dispatch({ type: actionTypes.STARSHIPS_GET_PENDING });
 
-            axios.get(`/${personId}/starships`)
+            axios.get(`/api/${personId}/starships`)
             .then(response => {
                 dispatch({
                     type: actionTypes.STARSHIPS_GET_RESOLVED,

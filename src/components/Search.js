@@ -9,10 +9,11 @@ class Search extends Component {
         const { searchTerm } = this.props.search.data;
         return (
             <input
-                className="form-control"
-                placeholder="Search"
-                onChange={e => filterPeople(e.target.value)}
-                value={searchTerm || ''} />
+              className="form-control"
+              placeholder="Search"
+              onChange={e => filterPeople(e.target.value)}
+              value={searchTerm || ''}
+            />
         );
     }
 }
@@ -20,7 +21,7 @@ class Search extends Component {
 const mapStateToProps = state => {
     const { search } = state;
     return { search };
-}
+};
 
 const mapDispatchToProps = dispatch => {
     return {

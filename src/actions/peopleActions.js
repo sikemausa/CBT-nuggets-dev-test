@@ -7,7 +7,7 @@ export const peopleActions = {
         return dispatch => {
             dispatch({ type: actionTypes.PEOPLE_GET_PENDING });
 
-            axios.get('/people')
+            axios.get('/api/people')
             .then(response => {
                 dispatch({
                     type: actionTypes.PEOPLE_GET_RESOLVED,

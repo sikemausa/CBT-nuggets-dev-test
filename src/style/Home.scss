@@ -47,3 +47,22 @@ a {
   background-color : $primary-light-color;
   cursor           : pointer;
 }
+
+#loading-screen {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: center;
+}
+
+#loading-image {
+    height: 400px;
+    width: 400px;
+    animation: spin 7s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

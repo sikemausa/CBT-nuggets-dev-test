@@ -10,18 +10,27 @@ app.on('listening', () => {
     controllers.getPeopleData(people);
 });
 
-app.get('/people', (req, res) => {
+app.get('/api/people', (req, res) => {
     const sortedPeople = controllers.alphabetizePeople(people);
     res.json(sortedPeople);
 })
 
-app.get('/:id/starships', (req, res) => {
+app.get('/api/person/:id', (req, res) => {
+    axios.get(`http://swapi.co/api/people/${req.params.id}`)
+    .then(response => res.json(response.data));
+})
+
+app.get('/api/:id/starships', (req, res) => {
     const starships = [];
     let person = controllers.findPersonById(people, req.params.id)[0];
     Promise.all(person.starships.map(url => axios.get(url)))
     .then(response => res.json(response.map(starship => starship.data)))
     .catch(err => console.log(err));
 })
+
+app.get('*', function(request, response){
+  response.sendfile('./dist/index.html');
+});
 
 app.use(function(err, req, res, next) {
   if (err) {

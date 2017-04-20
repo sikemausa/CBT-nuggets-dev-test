@@ -12,8 +12,8 @@ class Profile extends Component {
         this.props.getStarshipsData(id);
     }
 
-    successfulStarshipsLoad() {
-        return (this.props.starships.status === 'SUCCESS');
+    successfulLoad(itemStatus) {
+        return (itemStatus === 'SUCCESS');
     }
 
     findPersonById(people, idNumber) {
@@ -23,14 +23,14 @@ class Profile extends Component {
     }
 
     renderLoadingMessage() {
-        if (!this.successfulStarshipsLoad()) {
+        if (!this.successfulLoad(this.props.starships.status)) {
             return <p id="loading-text">{ 'Loading' }</p>;
         }
         return null;
     }
 
     renderTable() {
-        if (this.successfulStarshipsLoad()) {
+        if (this.successfulLoad(this.props.starships.status)) {
             return (
                 <table id="starship-data-table">
                     <tbody>
@@ -51,24 +51,24 @@ class Profile extends Component {
     }
 
     renderStarships() {
-        if (this.successfulStarshipsLoad()) {
+        if (this.successfulLoad(this.props.starships.status)) {
             const { starships } = this.props.starships.data;
-            return (
-                starships.map((starship, index) => {
-                    return (
-                        <tr key={index} className="starship-container">
-                            <td className="starship-data">{starship.name}</td>
-                            <td className="starship-data">{starship.model}</td>
-                            <td className="starship-data">{starship.length}</td>
-                            <td className="starship-data">{starship.cost_in_credits}</td>
-                            <td className="starship-data">{starship.crew}</td>
-                            <td className="starship-data">{starship.hyperdrive_rating}</td>
-                        </tr>
-                    );
-                })
-            );
+                return (
+                    starships.map((starship, index) => {
+                        return (
+                            <tr key={index} className="starship-container">
+                                <td className="starship-data">{starship.name}</td>
+                                <td className="starship-data">{starship.model}</td>
+                                <td className="starship-data">{starship.length}</td>
+                                <td className="starship-data">{starship.cost_in_credits}</td>
+                                <td className="starship-data">{starship.crew}</td>
+                                <td className="starship-data">{starship.hyperdrive_rating}</td>
+                            </tr>
+                        );
+                    })
+                );
         }
-        return null;
+        return;
     }
 
     render() {

@@ -16,17 +16,17 @@ const searchReducer = (state = initialState, action) => {
             return { ...state,
                 data: {
                     filteredPeople: action.people,
-                }
-            }
+                },
+            };
         }
 
         case FILTER_PEOPLE: {
             return { ...state,
-              data: {
-                searchTerm: action.searchTerm,
-                filteredPeople: action.filteredPeople,
-              },
-            }
+                data: {
+                    searchTerm: action.searchTerm,
+                    filteredPeople: action.filteredPeople,
+                },
+            };
         }
 
         default: {
