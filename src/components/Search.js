@@ -8,12 +8,15 @@ class Search extends Component {
         const { filterPeople } = this.props;
         const { searchTerm } = this.props.search.data;
         return (
-            <input
-              className="form-control"
-              placeholder="Search"
-              onChange={e => filterPeople(e.target.value)}
-              value={searchTerm || ''}
-            />
+            <div id="search-container">
+                <h1>Rebellion Database</h1>
+                <input
+                    id="search-input"
+                    placeholder="Search"
+                    onChange={e => filterPeople(e.target.value)}
+                    value={searchTerm || ''}
+                />
+            </div>
         );
     }
 }

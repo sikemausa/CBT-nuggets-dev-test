@@ -17,7 +17,7 @@ export const peopleActions = {
             .catch(err => {
                 dispatch({
                     type: actionTypes.PEOPLE_GET_REJECTED,
-                    error: err,
+                    error: err.message,
                 });
             });
         };

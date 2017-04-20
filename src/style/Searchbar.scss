@@ -1,0 +1,25 @@
+#search-container {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    h1 {
+        margin: 15px;
+    }
+    @include           primary-font;
+}
+
+#search-input {
+    padding: 5px;
+    color: $secondary-light-color;
+    font-size: 1.5em;
+    height: 40px;
+    margin: 15px;
+    background-color: $primary-dark-color;
+    border: none;
+}
+
+#search-input::placeholder {
+    color: $secondary-light-color;
+}
