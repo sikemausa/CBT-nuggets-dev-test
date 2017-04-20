@@ -15,7 +15,6 @@ export const starshipsActions = {
                 });
             })
             .catch(err => {
-                console.log(err.message);
                 dispatch({
                     type: actionTypes.STARSHIPS_GET_REJECTED,
                     error: err,

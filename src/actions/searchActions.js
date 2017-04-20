@@ -12,7 +12,6 @@ export const searchActions = {
             dispatch({
                 type: actionTypes.FILTER_PEOPLE,
                 searchTerm: value,
-                people,
                 filteredPeople,
             });
         };

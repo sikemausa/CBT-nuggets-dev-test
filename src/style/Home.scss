@@ -1,5 +1,5 @@
 html {
-    margin: 20px;
+  margin : 20px;
 }
 
 a {
@@ -38,14 +38,14 @@ a {
 }
 
 .person-name {
-  position   : relative;
-  top        : 0px;
-  right      : 1px;
-  width      : 450px;
-  height     : 50px;
-  border     : 1px solid black;
-  border-left: 2px solid black;
-  transition : .3s ease;
+  position    : relative;
+  top         : 0px;
+  right       : 1px;
+  width       : 450px;
+  height      : 50px;
+  border      : 1px solid black;
+  border-left : 2px solid black;
+  transition  : .3s ease;
 }
 
 .person-name:hover {
@@ -54,20 +54,31 @@ a {
 }
 
 #loading-screen {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    vertical-align: middle;
-    justify-content: center;
+  display         : flex;
+  height          : 100vh;
+  vertical-align  : middle;
+  align-items     : center;
+  justify-content : center;
 }
 
 #loading-image {
-    height: 400px;
-    width: 400px;
-    animation: spin 7s linear infinite;
+  width     : 400px;
+  height    : 400px;
+  animation : spin 7s linear infinite;
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  0% {
+    transform : rotate(0deg);
+  }
+
+  100% {
+    transform : rotate(360deg);
+  }
+}
+
+@media only screen
+       and (min-device-width : 768px)
+       and (max-device-width : 1024px)
+       and (orientation      : portrait) {
 }

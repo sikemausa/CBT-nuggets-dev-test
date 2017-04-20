@@ -34,13 +34,13 @@ app.get('*', function(request, response){
 
 app.use(function(err, req, res, next) {
   if (err) {
-    res.status(500).send(err);
-    console.log(err.message);
+      res.status(500).send(err);
+      console.log(err.message);
   }
   next();
 });
 
 app.listen(process.env.PORT || 3000, () => {
     app.emit('listening');
+    console.log('listening on 3000');
 });
-console.log('listening on 3000');

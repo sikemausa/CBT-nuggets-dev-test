@@ -10,7 +10,7 @@ import loadingIcon from '../../assets/loading-icon.png';
 class Home extends Component {
 
     componentWillMount() {
-        if (this.props.people.status === "SUCCESS") return;
+        if (this.props.people.status === 'SUCCESS') return;
         this.props.getPeopleData();
     }
 
@@ -21,14 +21,17 @@ class Home extends Component {
 
     render() {
         const { people } = this.props.people.data;
-        const successfulLoad = this.props.people.status === "SUCCESS";
+        const { search } = this.props;
+        const successfulLoad = this.props.people.status === 'SUCCESS';
+        const searchInProgress = search.status === 'IN_PROGRESS';
+        let list = searchInProgress ? search.data.filteredPeople : people;
 
         return (
             <div>
                 <Search />
                 <div>
                     { successfulLoad
-                        ? <PeopleTable people={people} getPersonId={this.getPersonId} />
+                        ? <PeopleTable people={list} getPersonId={this.getPersonId} />
                         : <LoadingScreen picture={loadingIcon} />
                     }
                 </div>

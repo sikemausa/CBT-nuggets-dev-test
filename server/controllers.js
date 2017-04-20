@@ -19,7 +19,7 @@ exports.getPeopleData = (people) => {
 
 exports.alphabetizePeople = (people) => {
     let sortedPeople = people.sort((a, b)=> {
-      return a.name.localeCompare(b.name);
+        return a.name.localeCompare(b.name);
     });
     return sortedPeople;
 }

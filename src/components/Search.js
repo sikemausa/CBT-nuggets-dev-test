@@ -9,12 +9,12 @@ class Search extends Component {
         const { searchTerm } = this.props.search.data;
         return (
             <div id="search-container">
-                <h1>Rebellion Database</h1>
+                <h1 id="title">Rebellion Database</h1>
                 <input
-                    id="search-input"
-                    placeholder="Search"
-                    onChange={e => filterPeople(e.target.value)}
-                    value={searchTerm || ''}
+                  id="search-input"
+                  placeholder="Search"
+                  onChange={e => filterPeople(e.target.value)}
+                  value={searchTerm || ''}
                 />
             </div>
         );

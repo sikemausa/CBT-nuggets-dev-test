@@ -65,3 +65,17 @@ html {
   width  : 125px;
   height : 125px;
 }
+
+@media (max-width: 800px) {
+  #profile-attributes-container {
+    margin         : 0;
+    padding        : 0;
+    text-align     : center;
+    flex-direction : column;
+  }
+
+  .starship-data,
+  .starship-data-header {
+    padding : 5px;
+  }
+}
