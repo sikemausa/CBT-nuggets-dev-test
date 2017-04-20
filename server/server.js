@@ -40,7 +40,7 @@ app.use(function(err, req, res, next) {
   next();
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
     app.emit('listening');
 });
 console.log('listening on 3000');
