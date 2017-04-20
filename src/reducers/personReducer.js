@@ -1,41 +1,38 @@
 import { ERROR, LOADING, SUCCESS, NOT_STARTED } from './statusTypes';
 import {
-    PEOPLE_GET_PENDING,
-    PEOPLE_GET_RESOLVED,
-    PEOPLE_GET_REJECTED,
-    FILTER_PEOPLE,
+    PERSON_GET_PENDING,
+    PERSON_GET_RESOLVED,
+    PERSON_GET_REJECTED,
 } from '../actions/types';
 
 const initialState = {
     data: {
-        people: [],
-        filteredPeople: [],
-        searchTerm: '',
+        person: {},
     },
     status: NOT_STARTED,
     error: {},
 };
 
-const peopleReducer = (state = initialState, action) => {
+const starshipsReducer = (state = initialState, action) => {
     const { type } = action;
 
     switch (type) {
-        case PEOPLE_GET_PENDING: {
+        case PERSON_GET_PENDING: {
             return { ...state,
               status: LOADING,
               error: false,
           };
         }
 
-        case PEOPLE_GET_RESOLVED: {
+        case PERSON_GET_RESOLVED: {
             return { ...state,
-                data: { people: action.people },
+                data: { person: action.person },
                 status: SUCCESS,
                 error: false,
             };
         }
 
-        case PEOPLE_GET_REJECTED: {
+        case PERSON_GET_REJECTED: {
             return { ...state,
               status: ERROR,
               error: action.error,
@@ -47,5 +44,5 @@ const peopleReducer = (state = initialState, action) => {
         }
     }
 };
-
-export default peopleReducer;
+//
+export default starshipsReducer;

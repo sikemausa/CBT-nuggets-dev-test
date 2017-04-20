@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { peopleActions } from '../../actions/peopleActions';
 import Person from '../Person';
+import Search from '../Search';
+import LoadingScreen from '../LoadingScreen';
+import PeopleTable from '../PeopleTable';
+import loadingIcon from '../../assets/loading-icon.png';
 
 class Home extends Component {
     constructor(props){
@@ -13,9 +16,7 @@ class Home extends Component {
     }
 
     componentWillMount() {
-        if (this.successfulPeopleLoad()) {
-            return;
-        }
+        if (this.props.people.status === 'SUCCESS') return;
         this.props.getPeopleData();
     }
 
@@ -24,70 +25,30 @@ class Home extends Component {
         return id.splice(5, 1);
     }
 
-    successfulPeopleLoad() {
-        return (this.props.people.status === 'SUCCESS');
-    }
-
-    renderLoadingMessage() {
-        if (!this.successfulPeopleLoad()) {
-            return <h1 id="loading-screen">{ 'Loading' }</h1>;
-        }
-        return null;
-    }
-
-    renderTable() {
-        if (this.successfulPeopleLoad()) {
-            return (
-                <table id="people-data-table">
-                    <tbody>
-                        <tr className="header-container">
-                            <th className="person-data-header name-header">Name</th>
-                            <th className="person-data-header gender-header">Gender</th>
-                            <th className="person-data-header year-born-header">Year Born</th>
-                        </tr>
-                        { this.renderPeople() }
-                    </tbody>
-                </table>
-            );
-        }
-        return null;
-    }
-
-    renderPeople() {
-        if (this.successfulPeopleLoad()) {
-            const { people } = this.props.people.data;
-            return (
-                people.map((person) => {
-                    let id = this.getPersonId(person.url);
-                    return (
-                        <Person
-                          key={id}
-                          id={id}
-                          people={people}
-                          name={person.name}
-                          gender={person.gender}
-                          birth_year={person.birth_year}
-                        />
-                    );
-                })
-            );
-        }
-        return null;
-    }
-
     render() {
+        const { people } = this.props.people.data;
+        const { search } = this.props;
+        const successfulLoad = this.props.people.status === 'SUCCESS';
+        const searchInProgress = search.status === 'IN_PROGRESS';
+        let list = searchInProgress ? search.data.filteredPeople : people;
+
         return (
             <div>
-                {this.renderLoadingMessage()}
-                {this.renderTable()}
+                <Search />
+                <div>
+                    { successfulLoad
+                        ? <PeopleTable people={list} getPersonId={this.getPersonId} />
+                        : <LoadingScreen picture={loadingIcon} />
+                    }
+                </div>
             </div>
         );
     }
 }
 
 const mapStateToProps = state => {
-    const { people } = state;
-    return { people };
+    const { people, search } = state;
+    return { people, search };
 };
 
 const mapDispatchToProps = dispatch => {

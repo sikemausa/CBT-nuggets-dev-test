@@ -1,67 +1,81 @@
-
-html{
-    background-color: $secondary-dark-color;
-    @include primary-font;
+html {
+  @include           primary-font;
+  background-color : $secondary-dark-color;
 }
 
-#starship-data-table{
-  width: 100%;
+#starship-data-table {
+  width : 100%;
 }
 
-.starship-data-header{
-  width: 33%;
-  border: 1px solid black;
-  padding: 5px;
+.starship-data-header {
+  width   : 33%;
+  padding : 5px;
+  border  : 1px solid black;
 }
 
-.starship-data{
-  text-align: center;
-  border: 1px solid black;
-  padding: 5px;
+.starship-data {
+  padding    : 5px;
+  border     : 1px solid black;
+  text-align : center;
 }
 
 #profile-attributes-container {
-    display: flex;
-    flex-direction: row;
-    font-size: 2em;
-    align-items: center;
-    justify-content: space-between;
-    margin: 50px;
-    padding: 50px;
+  display         : flex;
+  margin          : 50px;
+  padding         : 50px;
+  align-items     : center;
+  font-size       : 2em;
+  flex-direction  : row;
+  justify-content : space-between;
 }
 
-.profile-attribute{
-    margin: 20px;
+.profile-attribute {
+  margin : 20px;
 }
 
-#starships-table{
-    margin: 50px 125px 125px 125px;
-    background-color: $primary-dark-color;
+#starships-table {
+  margin           : 50px 125px 125px 125px;
+  background-color : $primary-dark-color;
 }
 
-.starship-data, .starship-data-header{
-    padding: 20px;
+.starship-data,
+.starship-data-header {
+  padding : 20px;
 }
 
-#profile-picture{
-    width: 230px;
-    height: 200px;
-    background-color: $primary-light-color;
+#profile-picture {
+  width            : 230px;
+  height           : 200px;
+  background-color : $primary-light-color;
 }
 
-#profile-picture-name{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#profile-picture-name {
+  display        : flex;
+  align-items    : center;
+  flex-direction : column;
 }
 
-#starships-info{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#starships-info {
+  display        : flex;
+  align-items    : center;
+  flex-direction : column;
 }
 
-#starships-title{
-    width: 125px;
-    height: 125px;
+#starships-title {
+  width  : 125px;
+  height : 125px;
+}
+
+@media (max-width: 800px) {
+  #profile-attributes-container {
+    margin         : 0;
+    padding        : 0;
+    text-align     : center;
+    flex-direction : column;
+  }
+
+  .starship-data,
+  .starship-data-header {
+    padding : 5px;
+  }
 }

@@ -1,16 +1,16 @@
-// COLORS
+// Variables
 
-$primary-dark-color: #393E46;
-$secondary-dark-color: #222831;
-$primary-light-color: lighten($primary-dark-color, 30%);
-$secondary-light-color: #EEEEEE;
+$primary-dark-color    : #393E46;
+$secondary-dark-color  : #222831;
+$primary-light-color   : lighten($primary-dark-color, 30%);
+$secondary-light-color : #EEEEEE;
+$primary-font-family   : "Open Sans";
+$primary-font-weight   : 100;
 
+// Mixins
 
-// FONT
-$primary-font-family: "Open Sans";
-$primary-font-weight: 100;
-@mixin primary-font{
-    color: $secondary-light-color;
-    font-weight: 100;
-    font-family: $primary-font-family;
+@mixin primary-font {
+  color       : $secondary-light-color;
+  font-family : $primary-font-family;
+  font-weight : 100;
 }
